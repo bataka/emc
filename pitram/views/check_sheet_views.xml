@@ -1,0 +1,138 @@
+<odoo>
+  <data>
+    <record id="check_sheet_view_tree" model="ir.ui.view">
+      <field name="name">check.sheet.tree</field>
+      <field name="model">check.sheet</field>
+      <field name="arch" type="xml">
+        <tree string="Check Sheet" decoration-danger="fuel_qty > 10">
+          <field name="sheet_num" />
+          <field name="vehicle_id" />
+          <field name="from_location" />
+          <field name="dest_location" />
+          <field name="distance" />
+          <field name="fuel_qty" sum="Total Fuel" />
+          <field name="state" />
+          <field name="sheet_date" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="check_sheet_view_form" model="ir.ui.view">
+      <field name="name">check.sheet.form</field>
+      <field name="model">check.sheet</field>
+      <field name="arch" type="xml">
+        <form string="Check Sheet">
+          <header>
+            <button string="Confirm"
+                class="btn btn-primary"
+                type="object"
+                name="action_confirm"
+                groups="pitram.fleet_group_doctor"
+                invisible="state != 'draft'"/>
+            <button string="Cancel"
+                class="btn btn-primary"
+                type="object"
+                name="action_cancel"
+                invisible="state != 'provided'"/>
+            <button string="Create task"
+                class="btn btn-primary"
+                type="object"
+                name="action_create_task"
+                invisible="state in ['provided', 'done']"/>
+            <field
+              name="state"
+              widget="statusbar"
+              options="{'clickable': '1'}"
+            />
+          </header>
+          <sheet>
+            <group>
+              <field name="sheet_num" />
+              <field name="vehicle_id" />
+              <field name="driver_id" />
+              <field name="license_no" />
+              <field name="from_location" />
+              <field name="dest_location" />
+              <field name="distance" />
+              <field name="fuel_qty" />
+              <field name="sheet_date" />
+              <field name="start_odometer" />
+              <field name="end_odometer" />
+              <field name="consumed_odometer" />
+            </group>
+            
+            <notebook>
+              <page string="Vehicle Check Sheets"> 
+                <field name="vehicle_sheets">
+                  <tree string="Check Sheet">
+                    <field name="vehicle_id" />
+                    <field name="from_location" />
+                    <field name="dest_location" />
+                    <field name="distance" />
+                    <field name="fuel_qty" sum="Total Fuel" />
+                    <field name="state" />
+                    <field name="sheet_date" />
+                  </tree>
+                </field>
+              </page>
+              <page string="Tasks"> 
+                <field name="tasks">
+                  <tree string="Tasks" editable="bottom">
+                    <field name="customer" />
+                    <field name="route" />
+                    <field name="note" />
+                  </tree>
+                </field>
+              </page>
+            </notebook>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="check_sheet_action" model="ir.actions.act_window">
+      <field name="name">Check Sheets</field>
+      <field name="res_model">check.sheet</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+      action="check_sheet_action"
+      parent="fleet.fleet_vehicles"
+      name="Check Sheet"
+      id="check_sheet_menu"
+      groups="fleet.fleet_group_user"
+      sequence="1"
+    />
+
+    <record id="check_sheet_view_search" model="ir.ui.view">
+      <field name="name">check.sheet.search</field>
+      <field name="model">check.sheet</field>
+      <field name="arch" type="xml">
+        <search string="All vehicles">
+          <field
+            string="Vehicle"
+            name="vehicle_id"
+            filter_domain="['|', ('vehicle_id.name', 'ilike', self), ('vehicle_id.license_plate', 'ilike', self)]"
+          />
+          <field string="From Location" name="from_location" />
+          <field string="Destination Location" name="dest_location" />
+
+          <filter
+            string="Apk sheets"
+            name="from_location_filter"
+            domain="['|', ('from_location', '=', 'apk'), ('dest_location', '=', 'apk')]"
+            help="Show all records which has from location is apk"
+          />
+          <group expand="1" string="Group By">
+            <filter
+              string="Vehicle"
+              name="groupby_vehicle_id"
+              context="{'group_by': 'vehicle_id'}"
+            />
+          </group>
+        </search>
+      </field>
+    </record>
+  </data>
+</odoo>

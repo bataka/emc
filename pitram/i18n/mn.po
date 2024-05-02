@@ -1,0 +1,251 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* pitram
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-25 01:52+0000\n"
+"PO-Revision-Date: 2024-04-25 01:52+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: pitram
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_search
+msgid "All vehicles"
+msgstr "Бүх тээврийн хэрэгслүүд"
+
+#. module: pitram
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_search
+msgid "Apk sheets"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_fleet_vehicle__asset_num
+msgid "Asset number"
+msgstr "Үндсэн хөрөнгийн код"
+
+#. module: pitram
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_form
+msgid "Cancel"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model,name:pitram.model_check_sheet
+#: model:ir.model.fields,field_description:pitram.field_check_sheet_task__check_sheet_id
+#: model:ir.ui.menu,name:pitram.check_sheet_menu
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_task_view_form
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_form
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_tree
+msgid "Check Sheet"
+msgstr ""
+
+#. module: pitram
+#: model:ir.actions.act_window,name:pitram.check_sheet_task_action
+msgid "Check Sheet Actions"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model,name:pitram.model_check_sheet_task
+#: model:ir.ui.menu,name:pitram.check_sheet_task_menu
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_task_view_tree
+msgid "Check Sheet Task"
+msgstr ""
+
+#. module: pitram
+#: model:ir.actions.act_window,name:pitram.check_sheet_action
+msgid "Check Sheets"
+msgstr ""
+
+#. module: pitram
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_form
+msgid "Confirm"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__consumed_odometer
+msgid "Consumed odometer"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model,name:pitram.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: pitram
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_form
+msgid "Create task"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__create_uid
+#: model:ir.model.fields,field_description:pitram.field_check_sheet_task__create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__create_date
+#: model:ir.model.fields,field_description:pitram.field_check_sheet_task__create_date
+msgid "Created on"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet_task__customer
+msgid "Customer"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__dest_location
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_search
+msgid "Destination Location"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__display_name
+#: model:ir.model.fields,field_description:pitram.field_check_sheet_task__display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__distance
+msgid "Distance km"
+msgstr ""
+
+#. module: pitram
+#: model:res.groups,name:pitram.fleet_group_doctor
+msgid "Doctor"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__driver_id
+msgid "Driver"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__end_odometer
+msgid "End Odometer"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model,name:pitram.model_fleet_vehicle
+msgid "Fleet Vehicle"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,help:pitram.field_check_sheet__vehicle_id
+msgid "Fleet Vehicle Help"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__from_location
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_search
+msgid "From Location"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__fuel_qty
+msgid "Given Fuel Qty"
+msgstr ""
+
+#. module: pitram
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_search
+msgid "Group By"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__id
+#: model:ir.model.fields,field_description:pitram.field_check_sheet_task__id
+msgid "ID"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__write_uid
+#: model:ir.model.fields,field_description:pitram.field_check_sheet_task__write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__write_date
+#: model:ir.model.fields,field_description:pitram.field_check_sheet_task__write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__license_no
+#: model:ir.model.fields,field_description:pitram.field_res_partner__license_no
+#: model:ir.model.fields,field_description:pitram.field_res_users__license_no
+msgid "License No"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet_task__note
+msgid "Note"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,help:pitram.field_check_sheet__start_odometer
+msgid "Previous date consumed"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet_task__route
+msgid "Route"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__sheet_num
+msgid "Sheet Num"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__sheet_date
+msgid "Sheet date"
+msgstr ""
+
+#. module: pitram
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_search
+msgid "Show all records which has from location is apk"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__start_odometer
+msgid "Start odometer"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__state
+msgid "State"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__tasks
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_form
+msgid "Tasks"
+msgstr ""
+
+#. module: pitram
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_form
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_tree
+msgid "Total Fuel"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__vehicle_id
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_search
+msgid "Vehicle"
+msgstr "Тээврийн хэрэгсэл"
+
+#. module: pitram
+#: model_terms:ir.ui.view,arch_db:pitram.check_sheet_view_form
+msgid "Vehicle Check Sheets"
+msgstr ""
+
+#. module: pitram
+#: model:ir.model.fields,field_description:pitram.field_check_sheet__vehicle_sheets
+msgid "Vehicle sheets"
+msgstr ""

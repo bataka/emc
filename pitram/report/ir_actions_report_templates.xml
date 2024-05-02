@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="report_checksheet_document">
+    <t t-call="web.external_layout">
+      <div class="row">
+        <div class="col-6">
+          <h5>"Эрдэнэт үйлдвэр" ТӨҮГ</h5>
+        </div>
+        <div class="col-6">
+          <h5>
+            Тээврийн хэрэгсэлийн замын хуудас №:
+            <span t-field="doc.sheet_num" />
+          </h5>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          Он сар өдөр:
+          <span t-field="doc.sheet_date" />
+        </div>
+        <div class="col-4">
+          Жолооч:
+          <span t-field="doc.driver_id" />
+        </div>
+        <div class="col-4">
+          Бүртгэлийн дугаар:
+          <span t-field="doc.license_no" />
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-4">
+          А/м төрөл:
+          <span t-field="doc.vehicle_id.model_id" />
+        </div>
+        <div class="col-4">
+          Улсын №:
+          <span t-field="doc.vehicle_id.license_plate" />
+        </div>
+      </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Захиалагч</th>
+            <th scope="col">Чиглэл</th>
+            <th scope="col">Тэмдэглэгээ</th>
+          </tr>
+        </thead>
+        <tbody>
+          <t t-foreach="doc.tasks" t-as="task">
+            <tr>
+              <td><span t-field="task.customer" /></td>
+              <td><span t-field="task.route" /></td>
+              <td><span t-field="task.note" /></td>
+            </tr>
+          </t>
+        </tbody>
+      </table>
+    </t>
+  </template>
+
+  <template id="report_check_sheet_raw">
+    <t t-call="web.html_container">
+      <t t-foreach="docs" t-as="doc">
+        <t t-call="pitram.report_checksheet_document" />
+      </t>
+    </t>
+  </template>
+  <template id="report_check_sheet">
+    <t t-call="pitram.report_check_sheet_raw" />
+  </template>
+</odoo>

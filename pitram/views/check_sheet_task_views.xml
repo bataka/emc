@@ -1,0 +1,48 @@
+<odoo>
+  <data>
+    <record id="check_sheet_task_view_tree" model="ir.ui.view">
+      <field name="name">check.sheet.task.tree</field>
+      <field name="model">check.sheet.task</field>
+      <field name="arch" type="xml">
+        <tree string="Check Sheet Task">
+          <field name="check_sheet_id" />
+          <field name="customer" />
+          <field name="route" />
+          <field name="note" />
+        </tree>
+      </field>
+    </record>
+
+    <record id="check_sheet_task_view_form" model="ir.ui.view">
+      <field name="name">check.sheet.form</field>
+      <field name="model">check.sheet.task</field>
+      <field name="arch" type="xml">
+        <form string="Check Sheet">
+          <sheet>
+            <group>
+              <field name="check_sheet_id" required="1" />
+              <field name="customer" />
+              <field name="route" />
+              <field name="note" />
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="check_sheet_task_action" model="ir.actions.act_window">
+      <field name="name">Check Sheet Actions</field>
+      <field name="res_model">check.sheet.task</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem
+      action="check_sheet_task_action"
+      parent="fleet.fleet_vehicles"
+      name="Check Sheet Task"
+      id="check_sheet_task_menu"
+      groups="fleet.fleet_group_user"
+      sequence="1"
+    />
+  </data>
+</odoo>
