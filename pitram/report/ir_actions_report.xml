@@ -27,4 +27,17 @@
         <field name="binding_type">report</field>
         <field name="paperformat_id" ref="pitram.checksheet_paperformat"/>
     </record>
+
+
+    <record id="action_fleet_vehicle_report" model="ir.actions.report">
+        <field name="name">Fleet Vehicle Report</field>
+        <field name="model">fleet.vehicle</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pitram.fleet_vehicle_report</field>
+        <field name="report_file">pitram.fleet_vehicle_report</field>
+        <field name="print_report_name">Print Fleet Vehicle Report</field>
+        <field name="binding_model_id" ref="model_fleet_vehicle"/>
+        <field name="binding_type">report</field>
+        <field name="paperformat_id" ref="pitram.checksheet_paperformat"/>
+    </record>
 </odoo>

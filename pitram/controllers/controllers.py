@@ -1,22 +1,29 @@
 # -*- coding: utf-8 -*-
-# from odoo import http
+from odoo import http
+from odoo.http import request
 
 
-# class Tender(http.Controller):
-#     @http.route('/tender/tender', auth='public')
-#     def index(self, **kw):
-#         return "Hello, world"
+class FleetController(http.Controller):
 
-#     @http.route('/tender/tender/objects', auth='public')
-#     def list(self, **kw):
-#         return http.request.render('tender.listing', {
-#             'root': '/tender/tender',
-#             'objects': http.request.env['tender.tender'].search([]),
-#         })
+    @http.route("/fleet/", auth="public")
+    def index(self, *args, **kwargs):
+        return {"message": "Hello, world"}
 
-#     @http.route('/tender/tender/objects/<model("tender.tender"):obj>', auth='public')
-#     def object(self, obj, **kw):
-#         return http.request.render('tender.object', {
-#             'object': obj
-#         })
-
+    @http.route("/fleet/withlogin/", methods=["post"], type="json", auth="user")
+    def withlogin(self, *args, **kwargs):
+        # methods : POST, GET, PUT, DELETE, OPTION
+        # type : http, json
+        # auth : user, public, none
+        # cors : True
+        # csrf : True
+        print("################")
+        print(args)
+        print(kwargs)
+        print(kwargs["send"])
+        print(kwargs["send"])
+        print(kwargs["send"])
+        print(kwargs["send"])
+        fleets = request.env["fleet.vehicle"].search([])
+        print(fleets)
+        print("################")
+        return {"success": True}

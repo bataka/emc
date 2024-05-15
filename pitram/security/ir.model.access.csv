@@ -1,3 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 check_sheet_model_access_right_user,check_sheet_model_access_right,model_check_sheet,fleet.fleet_group_user,1,1,1,1
 check_sheet_task_model_access_right_user,check_sheet_task_model_access_right,model_check_sheet_task,fleet.fleet_group_user,1,1,1,1
+generate_report_wizard_access,generate_report_wizard_access,model_generate_report_wizard,base.group_user,1,1,1,1
+fleet_report_pivot_access,fleet_report_pivot_access,model_fleet_report,base.group_user,1,1,1,1

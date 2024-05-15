@@ -1,0 +1,28 @@
+<odoo>
+    <data>
+        <record id="pivot_fleet_report" model="ir.ui.view">
+            <field name="name">Pivot Fleet Report</field>
+            <field name="model">fleet.report</field>
+            <field name="arch" type="xml">
+                <pivot string="Fleet Vehicle Analyse" sample="1">
+                    <field name="driver_id" type="col"/>
+                    <field name="future_driver_id" type="row"/>
+                </pivot>
+            </field>
+        </record>
+
+        <record id="action_fleet_report" model="ir.actions.act_window">
+            <field name="name">Action Fleet Report</field>
+            <field name="res_model">fleet.report</field>
+            <field name="view_mode">pivot,graph,tree</field>
+        </record>
+        
+        <menuitem
+            action="action_fleet_report"
+            parent="fleet.menu_fleet_reporting"
+            name="Fleet Report"
+            id="menu_fleet_report"
+            sequence="1"
+        />
+    </data>
+</odoo>
