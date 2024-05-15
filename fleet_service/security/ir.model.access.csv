@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_create,perm_write,perm_unlink
+access_employee_driving_history,access_employee_driving_history,model_driving_history,base.group_user,1,1,1,1
+access_diagnosis_history_template,access_diagnosis_history_template,model_diagnosis_history_template,base.group_user,1,1,1,1
+access_diagnosis_history_line_template,access_diagnosis_history_line_template,model_diagnosis_history_line_template,base.group_user,1,1,1,1
+access_diagnosis_history,access_diagnosis_history,model_diagnosis_history,base.group_user,1,1,1,1
+access_diagnosis_history_line,access_diagnosis_history_line,model_diagnosis_history_line,base.group_user,1,1,1,1

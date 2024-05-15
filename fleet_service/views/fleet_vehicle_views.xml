@@ -1,0 +1,99 @@
+<odoo>
+    <data>
+        <record id="tree_diagnosis_history_template_view" model="ir.ui.view">
+            <field name="name">Diagnosis History Template View</field>
+            <field name="model">diagnosis.history.template</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="model_id" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="form_diagnosis_history_template_view" model="ir.ui.view">
+            <field name="name">Form Diagnosis History Template View</field>
+            <field name="model">diagnosis.history.template</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="model_id" />
+                        </group>
+                        <notebook>
+                            <page string="Diagnosis History Line Template">
+                                <field name="line_ids">
+                                    <tree editable="bottom">
+                                        <field name="name" />
+                                        <field name="employee_id" />
+                                        <field name="total" sum="Total" />
+                                        <field name="assessment" sum="Assessment" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_diagnosis_history_template" model="ir.actions.act_window">
+            <field name="name">Action Diagnosis History Template</field>
+            <field name="res_model">diagnosis.history.template</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem
+            name="Diagnosis History Template"
+            action="action_diagnosis_history_template"
+            id="menu_diagnosis_hitory_template"
+            parent="fleet.fleet_configuration"
+            sequence="100"
+        />
+
+
+        <record id="fleet_vehicle_view_form_inherit_fleet_service" model="ir.ui.view">
+            <field name="name">fleet_vehicle_view_form.inherit.fleet_service</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="inherit_id" ref="fleet.fleet_vehicle_view_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='page_model']" position="after">
+                    <page name="page_diagnosis" string="Dianosis History">
+                        <field name="diagnosis_history_ids">
+                            <tree  delete="0">
+                                <field name="diagnosis_date" />
+                                <field name="diagnosis_next_date" force_save="1" />
+                                <field name="total" />
+                                <field name="assessment" />
+                                <field name="state" force_save="1" />
+                                <button confirm="Are you sure?" string="Approve" name="approve" type="object" />
+                                <button confirm="Are you sure?" string="Fail" name="fail" type="object" />
+                            </tree>
+                            <form>
+                                <group>
+                                    <group>
+                                        <field name="diagnosis_date" />
+                                    </group>
+                                    <group>
+                                        <field name="diagnosis_next_date" />
+                                    </group>
+                                </group>
+                                <notebook>
+                                    <page string="Diagnosis History Line" name="diagnosis_history_line">
+                                        <field name="line_ids">
+                                            <tree editable="bottom">
+                                                <field name="name" />
+                                                <field name="employee_id" />
+                                                <field name="total" sum="Total" />
+                                                <field name="assessment"  />
+                                            </tree>
+                                        </field>
+                                    </page>
+                                </notebook>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

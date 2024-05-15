@@ -1,0 +1,38 @@
+<odoo>
+    <data>
+        <record id="view_employee_form_inherit_fleet_service" model="ir.ui.view">
+            <field name="name">view_employee_form.inherit.fleet_service</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+            <field name="arch" type="xml">
+                <xpath expr='//page[@name="hr_settings"]' position="after">
+                    <page name="driver_license_info" string="Driver License Info">
+                        <group>
+                            <field name="driver_license_no" />
+                            <field name="driver_license_date" />
+                            <field name="driver_license_expired_date" />
+                        </group>
+                    </page>
+                    <page name="driving_history" string="Driving History">
+                        <field name="driving_history_ids">
+                            <tree no_create="True">
+                                <field name="vehicle_id" />
+                                <field name="reason" />
+                                <field name="description" />
+                                <field name="date" />
+                            </tree>
+                            <form>
+                                <group>
+                                    <field name="vehicle_id" />
+                                    <field name="reason" />
+                                    <field name="description" />
+                                    <field name="date" />
+                                </group>
+                            </form>
+                        </field>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>
