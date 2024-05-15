@@ -20,7 +20,10 @@ Long description of module's purpose
         "data/mail_template.xml",
         "security/ir.model.access.csv",
         "views/employee_views.xml",
+        "views/diagnosis_history_views.xml",
         "views/fleet_vehicle_views.xml",
+        "wizard/diagnosis_history_bulk_changes_views.xml",
+        "wizard/diagnosis_history_bulk_changes_v2_views.xml",
     ],
     # "installable": True
 }

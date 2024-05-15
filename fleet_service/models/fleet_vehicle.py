@@ -42,7 +42,9 @@ class DiagnosisHistoryLineTemplate(models.Model):
 class DiagnosisHistory(models.Model):
     _name = "diagnosis.history"
     _description = "Diagnosis History"
+    _rec_name = "diagnosis_date"
 
+    template_id = fields.Many2one("diagnosis.history.template")
     vehicle_id = fields.Many2one("fleet.vehicle")
     diagnosis_date = fields.Date()
     diagnosis_next_date = fields.Date(readonly=True)
@@ -55,20 +57,16 @@ class DiagnosisHistory(models.Model):
     line_ids = fields.One2many("diagnosis.history.line", "diagnosis_history_id")
 
     def onchange(self, values, field_names, fields_spec):
-
-        print("###############")
-        print("###############")
-        print(self.id)
-        print(self.id)
         vehicle_id = values.get("vehicle_id", {}).get("id")
-
         if vehicle_id:
             vehicle_obj_id = self.env["fleet.vehicle"].browse(vehicle_id)
-
+            print(vehicle_obj_id.model_id.id)
+            print(vehicle_obj_id.model_id.id)
+            print(vehicle_obj_id.model_id.id)
+            print(vehicle_obj_id.model_id.id)
             template_ids = self.env["diagnosis.history.template"].search(
                 [("model_id", "=", vehicle_obj_id.model_id.id)]
             )
-
             if template_ids:
                 template_id = template_ids[0]
                 line_ids = []
@@ -78,6 +76,9 @@ class DiagnosisHistory(models.Model):
                             0,
                             0,
                             {
+                                "template_id": (
+                                    template_line_id.id if template_line_id else False
+                                ),
                                 "name": template_line_id.name,
                                 "employee_id": template_line_id.employee_id.id,
                                 "total": template_line_id.total,
@@ -86,26 +87,19 @@ class DiagnosisHistory(models.Model):
                     )
 
                 print(line_ids)
-                print("##################")
-                values.update({"line_ids": line_ids})
-
-                self.line_ids = line_ids
-
+                print(line_ids)
+                print(line_ids)
+                values.update(
+                    {
+                        "template_id": template_id.id if template_id else False,
+                        "line_ids": line_ids,
+                    }
+                )
         return super().onchange(values, field_names, fields_spec)
 
     @api.depends("line_ids")
     def _compute_total(self):
         for rec in self:
-            # Example code
-            # total = 0
-            # for line_id in self.line_ids:
-            #     total += line_id.total
-
-            # def return_total(obj):
-            #     return obj.total
-
-            # rec.total = sum(self.line_ids.filtered(lambda obj: obj.total))
-            # rec.total = sum(self.line_ids.recude(lambda obj: obj.total))
             rec.total = sum(self.line_ids.mapped(lambda obj: obj.total))
 
     @api.depends("line_ids")
@@ -130,11 +124,7 @@ class DiagnosisHistory(models.Model):
 
     def run_diagnosis_alert(self):
         histories = self.env["diagnosis.history"].search([("state", "=", "pass")])
-        print("######################")
-        print(histories)
-        print("######################")
         for history in histories:
-            print(history.vehicle_id.driver_id.email)
             histories.action_send_and_print()
 
     def action_send_and_print(self):
@@ -148,10 +138,6 @@ class DiagnosisHistory(models.Model):
         template_id = self.env.ref("fleet_service.email_template_diagnosis_alert").id
         template = self.env["mail.template"].browse(template_id)
         template.send_mail(self.id, force_send=True)
-
-        print(template)
-
-        print("send template")
         return {
             "name": _("Send"),
             "type": "ir.actions.act_window",
@@ -168,13 +154,48 @@ class DiagnosisHistory(models.Model):
     def _get_report_base_filename(self):
         return "Fleet Service Vehicle"
 
+    def action_bulk_wizard(self):
+        print("###########################")
+        print(self.ids)
+        print(self.ids)
+        print(self.ids)
+        print(self.ids)
+        print(self.ids)
+        print(self.env.context.get("active_ids"))
+        print("###########################")
+        return {
+            "name": _("Send"),
+            "type": "ir.actions.act_window",
+            "view_type": "form",
+            "view_mode": "form",
+            "res_model": "diagnosis.history.bulk.changes.v2",
+            "target": "new",
+            "context": {
+                "active_ids": self.env.context.get("active_ids"),
+            },
+        }
+
 
 class DiagnosisHistoryLine(models.Model):
     _name = "diagnosis.history.line"
     _description = "Diagnosis History Line"
 
+    template_id = fields.Many2one("diagnosis.history.line.template")
     diagnosis_history_id = fields.Many2one("diagnosis.history")
-    name = fields.Char()
-    employee_id = fields.Many2one("hr.employee")
-    total = fields.Integer(default=0)
+    name = fields.Char(readonly=True)
+    employee_id = fields.Many2one("hr.employee", readonly=True)
+    total = fields.Integer(default=0, readonly=True)
     assessment = fields.Integer(default=0)
+    is_readonly = fields.Boolean(default=False, compute="_compute_is_readonly")
+
+    @api.depends("employee_id")
+    def _compute_is_readonly(self):
+        print("Compute readonly")
+        for rec in self:
+            print(rec.employee_id.user_id, self.env.uid)
+            if rec.employee_id.user_id.id == self.env.uid:
+                rec.is_readonly = False
+            else:
+                rec.is_readonly = True
+
+        print("Readonly value %s" % (rec.is_readonly))

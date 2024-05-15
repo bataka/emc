@@ -1,0 +1,43 @@
+<odoo>
+    <record id="view_diagnosis_history_bulk_changes_v2" model="ir.ui.view">
+        <field name="name">Diagnosis History Bulk Changes V2</field>
+        <field name="model">diagnosis.history.bulk.changes.v2</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="from_template_id" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Diagnosis History">
+                            <field name="line_ids" />
+                        </page>
+                    </notebook>
+                </sheet>
+                <footer>
+                    <button string="Convert" name="do_action" type="object" />
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- <record id="action_diagnosis_history_bulk_changes_v2" model="ir.actions.act_window">
+        <field name="name">Action Diagnosis History</field>
+        <field name="res_model">diagnosis.history.bulk.changes.v2</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record> -->
+
+    <record id="action_diagnosis_history_server1" model="ir.actions.server">
+        <field name="name">Actions Diagnosis History Bulk Changes V2</field>
+        <field name="model_id" ref="fleet_service.model_diagnosis_history" />
+        <field name="binding_model_id" ref="fleet_service.model_diagnosis_history" />
+        <field name="state">code</field>
+        <field name="code">
+            action = model.action_bulk_wizard()
+        </field>
+    </record>
+
+</odoo>
