@@ -1,0 +1,7 @@
+<odoo>
+    <templates>
+        <t t-name="graph_template">
+            <canvas id="numpyChart" width="400" height="400"></canvas>
+        </t>
+    </templates>
+</odoo>

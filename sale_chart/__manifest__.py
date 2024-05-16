@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    "name": "Fleet Service",
+    "name": "Sale Chart",
     "summary": "Short (1 phrase/line) summary of the module's purpose",
     "description": """
 Long description of module's purpose
@@ -13,21 +13,10 @@ Long description of module's purpose
     "category": "Uncategorized",
     "version": "0.1",
     # any module necessary for this one to work correctly
-    "depends": ["fleet", "hr"],
+    "depends": ["sale"],
     # always loaded
     "data": [
-        "data/report_actions.xml",
-        "data/cron.xml",
-        "data/mail_template.xml",
-        "security/ir.model.access.csv",
-        "views/employee_views.xml",
-        "views/diagnosis_history_views.xml",
-        "views/fleet_vehicle_views.xml",
-        "wizard/diagnosis_history_bulk_changes_views.xml",
-        "wizard/diagnosis_history_bulk_changes_v2_views.xml",
-        "wizard/fleet_service_report_wizard_views.xml",
-        "report/fleet_service_report_pdf.xml",
-        # "report/fleet_service_report_xls.xml",
+        "views/sale_views.xml",
     ],
     # "installable": True
 }

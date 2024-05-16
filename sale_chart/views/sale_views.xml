@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+        <record id="view_order_form_inherit_sale_chart" model="ir.ui.view">
+            <field name="name">view_order_form.inherit.sale_chart</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <!-- <xpath expr="//field[@name='order_line']/tree//field[@name='product_id']" position="after">
+                    <field name="chart" />
+                </xpath> -->
+                <xpath expr="//page[@name='customer_signature']" position="after">
+                    <page string="Graph">
+                        <!-- <graph string="Sales Orders" sample="1">
+                            <field name="partner_id"/>
+                            <field name="amount_total" type="measure"/>
+                        </graph> -->
+                        <field name="chart" widget="graph" options="{'graph_view_id': ref('view_model_graph')}"/>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

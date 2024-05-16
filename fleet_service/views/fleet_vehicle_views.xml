@@ -50,6 +50,31 @@
             sequence="100"
         />
 
+        <record id="tree_blog_blog" model="ir.ui.view">
+            <field name="name">Tree Blog Blog</field>
+            <field name="model">blog.blog</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="title" />
+                    <field name="head_line" />
+                    <field name="publish_date" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_blog_blog" model="ir.actions.act_window">
+            <field name="name">Action Blog Blog</field>
+            <field name="res_model">blog.blog</field>
+            <field name="view_mode">tree</field>
+        </record>
+
+        <menuitem
+            parent="fleet.fleet_vehicles"
+            action="action_blog_blog"
+            name="Blog Blog"
+            id="menu_blog_blog"
+            sequence="99" 
+        />
 
         <record id="fleet_vehicle_view_form_inherit_fleet_service" model="ir.ui.view">
             <field name="name">fleet_vehicle_view_form.inherit.fleet_service</field>

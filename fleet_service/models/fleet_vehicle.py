@@ -1,3 +1,4 @@
+import requests
 from datetime import timedelta
 from odoo import models, fields, api, _
 
@@ -123,9 +124,26 @@ class DiagnosisHistory(models.Model):
             rec.state = "fail"
 
     def run_diagnosis_alert(self):
-        histories = self.env["diagnosis.history"].search([("state", "=", "pass")])
-        for history in histories:
-            histories.action_send_and_print()
+        # histories = self.env["diagnosis.history"].search([("state", "=", "pass")])
+        # for history in histories:
+        #     histories.action_send_and_print()
+        url = "https://gogo.mn/cache/news-shinemedee?size=15"
+        response = requests.get(url, headers={"Content-Type": "application/json"})
+        data = response.json()
+        print(data)
+        if data.get("shinemedee_list"):
+            create_vals = []
+            for obj in data.get("shinemedee_list"):
+                if not self.env["blog.blog"].search([("src_id", "=", obj["id"])]):
+                    create_vals.append(
+                        {
+                            "src_id": obj["id"],
+                            "title": obj["title"],
+                            "head_line": obj["head_line"],
+                            "publish_date": obj["publish_date"],
+                        }
+                    )
+            self.env["blog.blog"].create(create_vals)
 
     def action_send_and_print(self):
         print("run template")
@@ -199,3 +217,13 @@ class DiagnosisHistoryLine(models.Model):
                 rec.is_readonly = True
 
         print("Readonly value %s" % (rec.is_readonly))
+
+
+class BlogBlog(models.Model):
+    _name = "blog.blog"
+    _description = "Blog Blog"
+
+    src_id = fields.Integer()
+    title = fields.Char()
+    head_line = fields.Char()
+    publish_date = fields.Char()

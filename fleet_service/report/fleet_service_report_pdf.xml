@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <data>
         <record id="action_fleet_service_report_pdf" model="ir.actions.report">
@@ -12,22 +13,29 @@
         </record>
 
         <template id="fleet_service_report_pdf">
-            <t t-call="web.html_container">
-                <table>
-                    <tr>
-                        <th>Оношилгоо хийсэн огноо</th>
-                        <th>Оношилгоо хийх дараагийн огноо</th>
-                        <th>Оношилгооны төлөв</th>
-                    </tr>
-                    <t t-foreach="history_datas" t-as="o">
+            <t t-call="web.html_container" t-lang="en_US">
+                <div class="page">
+                    <table class="table table-bordered">
                         <tr>
-                            <td><t t-esc="o['diagnosis_date']" /></td>
-                            <td><t t-esc="o['diagnosis_next_date']" /></td>
-                            <td><t t-esc="o['state']" /></td>
+                            <th>Diagnosis date</th>
+                            <th>Diagnosis next date</th>
+                            <th>State</th>
                         </tr>
-                    </t>
-                </table>
+                        <t t-foreach="history_datas" t-as="o">
+                            <tr>
+                                <td><t t-esc="o['diagnosis_date']" /></td>
+                                <td><t t-esc="o['diagnosis_next_date']" /></td>
+                                <td><t t-esc="o['state']" /></td>
+                            </tr>
+                        </t>
+                    </table>
+                </div>
             </t>
         </template>
+
+        <!-- <template id="fleet_service_report_pdf">
+            <t t-call="fleet_service_report_pdf_body" t-lang="en_US"/>
+        </template> -->
+
     </data>
 </odoo>
