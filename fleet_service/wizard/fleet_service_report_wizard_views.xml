@@ -1,0 +1,48 @@
+<odoo>
+    <data>
+        <record id="fleet_service_report_wizard" model="ir.ui.view">
+            <field name="name">Fleet Service Report Wizard</field>
+            <field name="model">fleet.service.report.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <group>
+                        <group>
+                            <field name="from_date" />
+                            <field name="group_by" />
+                        </group>
+                        <group>
+                            <field name="to_date" />
+                        </group>
+                    </group>
+                    <notebook>
+                        <page name="vehicles" string="Vehicles">
+                            <field name="vehicle_ids" />
+                            
+                        </page>
+                    </notebook>
+                    <footer>
+                        <button name="export_pdf" string="Export pdf" type="object" class="oe_highlight" />
+                        <button name="export_excel" string="Export excel" type="object" class="oe_highlight" />
+                        <button string="Discard" class="btn-secondary" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_fleet_service_report_wizard" model="ir.actions.act_window">
+            <field name="name">Action Fleet Service Report Wizard</field>
+            <field name="res_model">fleet.service.report.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem
+            action="action_fleet_service_report_wizard"
+            parent="fleet.menu_fleet_reporting"
+            name="Fleet Service Report Wizard"
+            id="menu_fleet_service_report"
+            sequence="2"
+        />
+
+    </data>
+</odoo>

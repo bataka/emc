@@ -1,0 +1,33 @@
+<odoo>
+    <data>
+        <record id="action_fleet_service_report_pdf" model="ir.actions.report">
+            <field name="name">Action Fleet Service Report PDF</field>
+            <field name="model">fleet.vehicle</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">fleet_service.fleet_service_report_pdf</field>
+            <field name="report_file">fleet_service.fleet_service_report_pdf</field>
+            <field name="print_report_name">PDF Fleet Vehicle Report</field>
+            <field name="binding_model_id" ref="model_fleet_vehicle"/>
+            <field name="binding_type">report</field>
+        </record>
+
+        <template id="fleet_service_report_pdf">
+            <t t-call="web.html_container">
+                <table>
+                    <tr>
+                        <th>Оношилгоо хийсэн огноо</th>
+                        <th>Оношилгоо хийх дараагийн огноо</th>
+                        <th>Оношилгооны төлөв</th>
+                    </tr>
+                    <t t-foreach="history_datas" t-as="o">
+                        <tr>
+                            <td><t t-esc="o['diagnosis_date']" /></td>
+                            <td><t t-esc="o['diagnosis_next_date']" /></td>
+                            <td><t t-esc="o['state']" /></td>
+                        </tr>
+                    </t>
+                </table>
+            </t>
+        </template>
+    </data>
+</odoo>

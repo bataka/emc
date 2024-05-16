@@ -16,6 +16,7 @@ Long description of module's purpose
     "depends": ["fleet", "hr"],
     # always loaded
     "data": [
+        "data/report_actions.xml",
         "data/cron.xml",
         "data/mail_template.xml",
         "security/ir.model.access.csv",
@@ -24,6 +25,8 @@ Long description of module's purpose
         "views/fleet_vehicle_views.xml",
         "wizard/diagnosis_history_bulk_changes_views.xml",
         "wizard/diagnosis_history_bulk_changes_v2_views.xml",
+        "wizard/fleet_service_report_wizard_views.xml",
+        "report/fleet_service_report_pdf.xml",
     ],
     # "installable": True
 }

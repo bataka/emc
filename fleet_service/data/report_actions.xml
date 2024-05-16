@@ -1,0 +1,16 @@
+<odoo>
+    <data>
+        <record id="action_fleet_service_html_report" model="ir.actions.client">
+            <field name="name">Action Fleet Service HTML report</field>
+            <field name="tag">fleet_service_report</field>
+        </record>
+
+        <menuitem
+            action="action_fleet_service_html_report"
+            parent="fleet.menu_fleet_reporting"
+            name="Fleet HTML Report"
+            id="menu_fleet_html_report"
+            sequence="2"
+        />
+    </data>
+</odoo>
